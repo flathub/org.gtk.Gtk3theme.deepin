@@ -1,12 +1,10 @@
 {
   "id": "org.gtk.Gtk3theme.deepin",
   "branch": "3.22",
-  "build-extension": true,
   "runtime": "org.freedesktop.Platform",
   "sdk": "org.freedesktop.Sdk",
-  "runtime-version": "19.08",
+  "runtime-version": "25.08",
   "build-extension": true,
-  "appstream-compose": false,
   "separate-locales": false,
   "modules": [
     {
@@ -20,8 +18,14 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/linuxdeepin/deepin-gtk-theme/archive/17.10.8.tar.gz",
-          "sha256": "83302b46b4e02310443ebb87fe8c50108c697b8f0c1f7dd7157d1d80dbdade61"
+          "url": "https://github.com/linuxdeepin/deepin-gtk-theme/archive/25.3.7.tar.gz",
+          "sha256": "77d6862615b726aff533d3f43e6f43e899795c7d7ec0adf0027ee8fc03922c81",
+          "x-checker-data": {
+            "type": "json",
+            "url": "https://api.github.com/repos/linuxdeepin/deepin-gtk-theme/releases/latest",
+            "version-query": ".tag_name",
+            "url-query": "\"https://github.com/linuxdeepin/deepin-gtk-theme/archive/\" + $version + \".tar.gz\""
+          }
         }
       ]
     },
@@ -29,9 +33,7 @@
       "name": "appdata",
       "buildsystem": "simple",
       "build-commands": [
-        "mkdir -p ${FLATPAK_DEST}/share/appdata",
-        "cp org.gtk.Gtk3theme.deepin.appdata.xml ${FLATPAK_DEST}/share/appdata",
-        "appstream-compose --basename=org.gtk.Gtk3theme.deepin --prefix=${FLATPAK_DEST} --origin=flatpak org.gtk.Gtk3theme.deepin"
+        "install -Dm644 org.gtk.Gtk3theme.deepin.appdata.xml ${FLATPAK_DEST}/share/metainfo/org.gtk.Gtk3theme.deepin.metainfo.xml"
       ],
       "sources": [
         {
@@ -39,6 +41,6 @@
           "path": "org.gtk.Gtk3theme.deepin.appdata.xml"
         }
       ]
-}
+    }
   ]
 }
